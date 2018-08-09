@@ -1,7 +1,11 @@
+library(dplyr)
+
 assign_grade <- function(score){
-  cut(score, 
-      breaks = c(-Inf, 60, 70, 80, 90, Inf), 
-      labels = c("F", "D", "C", "B", "A"),
-      include.lowest = TRUE,
-      right = FALSE)
+  grade <- case_when(
+    score > 90 ~ "A",
+    score >= 80 & score < 90 ~ "B",
+    TRUE ~ "F"
+  )
+  
+  grade
 }
